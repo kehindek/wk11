@@ -1,5 +1,5 @@
 properties([pipelineTriggers([githubPush()])]) 
- agent { Dockerfile true }
+
  node('linux'){
     stage('Setup'){
         git 'https://github.com/kehindek/wk11.git'
