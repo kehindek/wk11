@@ -29,7 +29,7 @@ withDockerContainer('classweb') {
     // some block
      docker build -t classweb .
      docker run -d -p "80:80" --name classweb1
-    ip =  docker inspect --format {{ .NetworkSettings.IPAddress}}' classweb1
+    ip =  docker inspect --format {{.NetworkSettings.IPAddress}}' classweb1
      curl -s ip
 }
 
