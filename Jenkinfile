@@ -12,7 +12,7 @@ node('linux'){
        // This step should not normally be used in your script. Consult the inline help for details.
 withDockerContainer('classweb') {
     // some block
-    # Dockerfile
+   
 FROM nginx
 RUN apt-get update -y
 LABEL maintainer = "Kenny Kalejaiye Kale5555@stthomas.edu"
