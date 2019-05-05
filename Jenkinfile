@@ -1,6 +1,6 @@
 properties([pipelineTriggers([githubPush()])]) 
-
-node('linux'){
+ agent { dockerfile true }
+ node('linux'){
     stage('Setup'){
         git 'https://github.com/kehindek/wk11.git'
    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'], [$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
