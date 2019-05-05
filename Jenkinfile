@@ -10,25 +10,21 @@ node('linux'){
     }
     stage('Build Stage'){
        // This step should not normally be used in your script. Consult the inline help for details.
-withDockerContainer('classweb') {
-    // some block
+ sh "
 FROM nginx
 RUN yum update -y
 LABEL maintainer = "Kenny Kalejaiye Kale5555@stthomas.edu"
 EXPOSE 80
-COPY /workspace/docker-pipeline/index.html /usr/share/nginx/html
+COPY /workspace/docker-pipeline/index.html /usr/share/nginx/html"
 
 }
-    }
+    
      stage('Test Stage'){
 // This step should not normally be used in your script. Consult the inline help for details.
-withDockerContainer('classweb') {
-    // some block
+ sh "
      docker build -t classweb .
      docker run -d -p "80:80" --name classweb1
-     curl docker inspect --format '{{.NetworkSettings.IPAddress}}' classweb1
-}
-
+     curl docker inspect --format '{{.NetworkSettings.IPAddress}}' classweb1"
      }
   
 }
