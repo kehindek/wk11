@@ -14,7 +14,7 @@ withDockerContainer('classweb') {
     // some block
    
 FROM nginx
-RUN apt-get update -y
+RUN yum update -y
 LABEL maintainer = "Kenny Kalejaiye Kale5555@stthomas.edu"
 ENV NGINX_PORT 80
 EXPOSE 80
