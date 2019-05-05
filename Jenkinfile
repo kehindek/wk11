@@ -9,6 +9,8 @@ properties([pipelineTriggers([githubPush()])])
 }
     }
     stage('Build Stage'){
+ agent { dockerfile true }
+
        // This step should not normally be used in your script. Consult the inline help for details.
  sh 'COPY /workspace/docker-pipeline/index.html /usr/share/nginx/html'
 
