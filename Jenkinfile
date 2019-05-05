@@ -17,7 +17,7 @@ FROM nginx
 RUN yum update -y
 LABEL maintainer = "Kenny Kalejaiye Kale5555@stthomas.edu"
 EXPOSE 80
-COPY html/index.html /usr/share/nginx/html
+COPY /workspace/docker-pipeline/index.html /usr/share/nginx/html
 docker build -t classweb:1.0 .
 
 }
