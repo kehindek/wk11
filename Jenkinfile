@@ -30,7 +30,7 @@ withDockerContainer('classweb') {
      docker build -t classweb .
      docker run -d -p "80:80" --name classweb1
      docker inspect --format '{{.NetworkSettings.IPAddress}}' classweb1
-     curl -s locahosts
+     curl -s localhost:80
 }
 
      }
