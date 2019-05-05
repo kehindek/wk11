@@ -12,7 +12,6 @@ node('linux'){
        // This step should not normally be used in your script. Consult the inline help for details.
 withDockerContainer('classweb') {
     // some block
-   
 FROM nginx
 RUN yum update -y
 LABEL maintainer = "Kenny Kalejaiye Kale5555@stthomas.edu"
