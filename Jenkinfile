@@ -7,7 +7,7 @@ node('linux'){
     // some block
      sh "aws s3 cp s3://kehindek-assignment-4/classweb.html /workspace/docker-pipeline/index.html"
 }
-    
+    }
     stage('Build Stage'){
        // This step should not normally be used in your script. Consult the inline help for details.
 withDockerContainer('classweb') {
