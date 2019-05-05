@@ -27,8 +27,8 @@ COPY /workspace/docker-pipeline/index.html /usr/share/nginx/html
 // This step should not normally be used in your script. Consult the inline help for details.
 withDockerContainer('classweb') {
     // some block
-     docker build -t classweb:1.0 .
-     docker run -d -p 80:80 --name classweb1
+     docker build -t classweb .
+     docker run -d -p 80:80 --name classweb:1.0
     ip =  docker inspect --format {{ .NetworkSettings.IPAddress}}' classweb1
      curl -s ip
 }
