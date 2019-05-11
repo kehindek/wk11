@@ -21,7 +21,7 @@ properties([pipelineTriggers([githubPush()])])
   sh 'docker rm classweb1'
     sh' docker run -d --name classweb1 --env NGINX_PORT=80 -p 8080:80 -ti classweb:1.0'
     sh'''
-         CONTAINER_IP=$(docker inspect --format "{{.NetworkSettings.IPAddress}}" classweb1
+         CONTAINER_IP=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' classweb1
          curl -s $CONTAINER_IP
          '''
          sh 'docker stop classweb1'
