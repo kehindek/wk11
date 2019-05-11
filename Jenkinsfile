@@ -17,7 +17,7 @@ properties([pipelineTriggers([githubPush()])])
     
      stage('Test Stage'){
 // This step should not normally be used in your script. Consult the inline help for details.
- sh 'docker rm classweb1'
+ sh 'docker ps -a -q | ForEach { docker stop $_ }'
     sh' docker run -d --name classweb1 -p 80:80 --env NGINX_PORT=80 classweb:1.0'
     sh'''
          CONTAINER_IP=$(docker inspect --format "{{.NetworkSettings.IPAddress}}" classweb1
