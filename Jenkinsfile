@@ -26,5 +26,4 @@ properties([pipelineTriggers([githubPush()])])
          sh 'docker stop classweb1'
          sh 'docker rm classweb1'
      }
-  
 }
