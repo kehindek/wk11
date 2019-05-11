@@ -23,8 +23,7 @@ properties([pipelineTriggers([githubPush()])])
          CONTAINER_IP=$(docker inspect --format "{{.NetworkSettings.IPAddress}}" classweb1
          curl -s $CONTAINER_IP
          '''
-         sh 'docker stop classweb1'
-         sh 'docker rm classweb1'
+   
      }
   
 }
