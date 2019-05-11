@@ -9,18 +9,22 @@ properties([pipelineTriggers([githubPush()])])
 }
     }
     stage('Build Stage'){
- agent { dockerfile true }
 
        // This step should not normally be used in your script. Consult the inline help for details.
- sh 'COPY /workspace/docker-pipeline/index.html /usr/share/nginx/html'
+ sh 'docker build -t classweb:1:0 .'
 
 }
     
      stage('Test Stage'){
 // This step should not normally be used in your script. Consult the inline help for details.
- sh 'docker build -t classweb:1.0 .'
-    sh' docker run -d -p "80:80" --name classweb1'
-    sh' curl docker inspect --format "{{.NetworkSettings.IPAddress}}" classweb1'
+
+    sh' docker run -d -p "80:80" --env NGINX_PORT=80 classweb:1.0'
+    sh'''
+         CONTAINER_IP=$(docker inspect --format "{{.NetworkSettings.IPAddress}}" classweb1'
+         curl -s $CONTAINER_IP
+         '''
+         sh 'docker stop classweb1'
+         sh 'docker rm classweb1'
      }
   
 }
