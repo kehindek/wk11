@@ -11,7 +11,7 @@ properties([pipelineTriggers([githubPush()])])
     stage('Build Stage'){
 
        // This step should not normally be used in your script. Consult the inline help for details.
- sh 'docker build -t classweb:1:0 .'
+ sh 'docker build -t classweb:1.0 .'
 
 }
     
