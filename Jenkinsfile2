@@ -1,1 +1,13 @@
 
+properties([pipelineTriggers([githubPush()])]) 
+
+ node('linux'){
+    stage('Setup'){
+        git 'https://github.com/kehindek/wk11.git'
+   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'], [$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+    // some block
+  aws cloudformation create-stack --region us-east-1 --stack-name final-test --template-body file://docker-single-server.json --parameters ParameterKey=KeyName,ParameterValue=<your pem file name> ParameterKey=YourIp,ParameterValue=3.88.116.130/32
+      }
+    }
+
+}
