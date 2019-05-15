@@ -9,5 +9,4 @@ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariab
    sh 'aws cloudformation create-stack --region us-east-1 --stack-name final-test --template-body file://docker-single-server-1.json --parameters ParameterKey=KeyName,ParameterValue=class_vpc.pem ParameterKey=YourIp,ParameterValue=3.88.116.130/32'
       }
     }
-    
 }
