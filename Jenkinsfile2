@@ -7,7 +7,7 @@ properties([pipelineTriggers([githubPush()])])
 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'a24d41e0-da79-4366-aa1d-9d5e1cbc4c33', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
     // some block
 
-  aws cloudformation create-stack --region us-east-1 --stack-name final-test --template-body file://docker-single-server.json --parameters ParameterKey=KeyName,ParameterValue=<your pem file name> ParameterKey=YourIp,ParameterValue=3.88.116.130/32
+  aws cloudformation create-stack --region us-east-1 --stack-name final --template-body file://docker-single-server.json --parameters ParameterKey=KeyName,ParameterValue=<your pem file name> ParameterKey=YourIp,ParameterValue=3.88.116.130/32
       }
     }
 
