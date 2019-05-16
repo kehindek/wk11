@@ -9,7 +9,10 @@ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariab
 
   sh 'aws cloudformation create-stack --region us-east-1  --stack-name final-test --template-body file://docker-single-server-1.json  --parameters ParameterKey=KeyName,ParameterValue=class_vpc ParameterKey=YourIp,ParameterValue=54.89.236.41/32'
   sh 'aws cloudformation describe-stacks --region us-east-1 --stack-name final-test'
-
+sh '''
+		       dockerIP=$(returnStdout: true, script:"aws ec2 describe-instances --region us-east-1 --query ")
+			      ssh -o StrictHostKeyChecking=no ubuntu@$dockerIP uptime			
+			'''		
           }
    
       }
